@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging and build
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+wheels/
+pip-wheel-metadata/
+
+# FastAPI/Uvicorn runtime
+*.log
+uvicorn.log
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Tests and coverage
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+pytestdebug.log
+
+# Static analysis and type checking
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+.dmypy.json
+.tox/
+.nox/
+
+# IDEs
+.idea/
+.vscode/
+
+# Local databases and WebSocket recordings
+*.sqlite
+*.sqlite3
+*.db
+*.pcap
