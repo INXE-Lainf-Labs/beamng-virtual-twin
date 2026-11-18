@@ -66,7 +66,7 @@ A solução é composta por cinco componentes:
 ### 2.1 Diagrama da arquitetura
 
 ```mermaid
-flowchart LR
+flowchart TD
     Veiculo[Veículo real]
     Smartphone[Smartphone]
     OBD[Adaptador OBD-II]
@@ -76,15 +76,15 @@ flowchart LR
     Cliente[Cliente Python BeamNGpy]
     BeamNG[BeamNG.tech]
 
-    Smartphone --> App
-    OBD --> Smartphone
     Veiculo --> Smartphone
+    OBD --> Smartphone
+    Smartphone -->|Dados coletados| App
     App <-->|WebSocket| Backend
     Backend --> Controle
-    Controle -->|Comandos de controle| Cliente
-    Cliente <-->|WebSocket| Backend
+    Controle -->|Referências de controle| Cliente
     Cliente -->|Direção, acelerador e freio| BeamNG
     BeamNG -->|Estado físico e sensores virtuais| Cliente
+    Cliente -->|Telemetria virtual| Backend
 ```
 
 ### 2.2 Responsabilidades dos componentes

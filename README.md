@@ -7,14 +7,21 @@ Dados coletados por um aplicativo Flutter, como GPS, IMU e informações OBD-II,
 ## Visão da arquitetura
 
 ```mermaid
-flowchart LR
-    Real[Veículo real] --> Sensor[Smartphone e adaptador OBD-II]
-    Sensor --> App[App Flutter]
-    App <-->|WebSocket| Backend[Backend FastAPI]
-    Backend -->|Comandos de controle| BeamNGClient[Cliente Python BeamNGpy]
-    BeamNGClient -->|Direção, aceleração e freio| BeamNG[BeamNG.tech]
-    BeamNG -->|Estado físico e telemetria| BeamNGClient
-    BeamNGClient -->|Telemetria virtual| Backend
+flowchart TD
+    Real[Veículo real]
+    Sensor[Smartphone + OBD-II]
+    App[App Flutter]
+    Backend[Backend FastAPI]
+    Cliente[Cliente BeamNGpy]
+    BeamNG[BeamNG.tech]
+
+    Real --> Sensor
+    Sensor -->|Dados dos sensores| App
+    App <-->|WebSocket| Backend
+    Backend -->|Referências de controle| Cliente
+    Cliente -->|Direção e velocidade| BeamNG
+    BeamNG -->|Estado físico| Cliente
+    Cliente -->|Telemetria virtual| Backend
 ```
 
 ### Componentes
